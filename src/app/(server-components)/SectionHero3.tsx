@@ -9,8 +9,14 @@ export interface SectionHero3Props {
   className?: string;
 }
 
+interface AnimationState {
+  pest: any;
+  moving: any;
+  insurance: any;
+}
+
 const SectionHero3: FC<SectionHero3Props> = ({ className = "" }) => {
-  const [animations, setAnimations] = useState<any>({
+  const [animations, setAnimations] = useState<AnimationState>({
     pest: null,
     moving: null,
     insurance: null
@@ -27,15 +33,15 @@ const SectionHero3: FC<SectionHero3Props> = ({ className = "" }) => {
         
         if (pestResponse.ok) {
           const pestData = await pestResponse.json();
-          setAnimations(prev => ({ ...prev, pest: pestData }));
+          setAnimations((prev: AnimationState) => ({ ...prev, pest: pestData }));
         }
         if (movingResponse.ok) {
           const movingData = await movingResponse.json();
-          setAnimations(prev => ({ ...prev, moving: movingData }));
+          setAnimations((prev: AnimationState) => ({ ...prev, moving: movingData }));
         }
         if (insuranceResponse.ok) {
           const insuranceData = await insuranceResponse.json();
-          setAnimations(prev => ({ ...prev, insurance: insuranceData }));
+          setAnimations((prev: AnimationState) => ({ ...prev, insurance: insuranceData }));
         }
       } catch (error) {
         console.log("Failed to load Lottie animations, using fallback icons");
