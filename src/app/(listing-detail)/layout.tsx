@@ -10,6 +10,7 @@ import MobileFooterSticky from "./(components)/MobileFooterSticky";
 import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/constant";
 import { imageGallery as listingCarImageGallery } from "./listing-car-detail/constant";
 import { imageGallery as listingExperienceImageGallery } from "./listing-experiences-detail/constant";
+import { imageGallery as listingServiceImageGallery } from "./listing-service-detail/constant";
 import { Route } from "next";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
@@ -33,6 +34,9 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
     }
     if (thisPathname?.includes("/listing-experiences-detail")) {
       return listingExperienceImageGallery;
+    }
+    if (thisPathname?.includes("/listing-service-detail")) {
+      return listingServiceImageGallery;
     }
 
     return [];
